@@ -1,0 +1,20 @@
+{
+  "name": "wingbot",
+  "license": "MIT",
+  "scripts": {
+    "dev": "env-cmd nodemon script.js",
+    "start": "env-cmd node script.js"
+  },
+  "dependencies": {
+    "@slack/web-api": "^6.10.0",
+    "node-schedule": "^2.1.1"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "nodemon": "^3.0.2",
+    "prettier": "3.1.1"
+  }
+}
