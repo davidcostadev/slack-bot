@@ -23,6 +23,7 @@ async function checkUserResponseInThread(userId, threadTs) {
     );
 
     if (!userHasResponded) {
+      console.log("User has not responded yet: ", userId);
       await sendDirectMessage(
         userId,
         "Remember to post your update in the thread!",
