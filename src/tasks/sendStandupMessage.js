@@ -2,6 +2,7 @@ const { WebClient } = require("@slack/web-api");
 
 const { formatDate } = require("../utils/formatDate.js");
 const { generateMessage } = require("../text-messages.js");
+const { getReminderMessage } = require("../reminder-messages.js");
 
 let lastThreadTs = null;
 
@@ -24,10 +25,7 @@ async function checkUserResponseInThread(userId, threadTs) {
 
     if (!userHasResponded) {
       console.log("User has not responded yet: ", userId);
-      await sendDirectMessage(
-        userId,
-        "Remember to post your update in the thread!",
-      );
+      await sendDirectMessage(userId, getReminderMessage());
     }
   } catch (error) {
     console.error(error);

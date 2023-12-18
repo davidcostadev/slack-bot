@@ -21,7 +21,7 @@ if (!process.env.SLACK_USERS) {
 }
 
 const RUN_STANDUP = "0 12 * * 1-5";
-const RUN_STANDUP_REMINDER = "0 13 * * 1-5";
+const RUN_STANDUP_REMINDER = "0 14 * * 1-5";
 
 schedule.scheduleJob(RUN_STANDUP, sendStandupMessage);
 
