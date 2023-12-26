@@ -20,11 +20,13 @@ if (!process.env.SLACK_USERS) {
   process.exit(1);
 }
 
-const RUN_STANDUP = "0 12 * * 1-5";
-const RUN_STANDUP_REMINDER = "0 14 * * 1-5";
+const RUN_STANDUP = "0 15 * * 1-5";
+const RUN_STANDUP_REMINDER = "0 16 * * 1-5";
 
 schedule.scheduleJob(RUN_STANDUP, sendStandupMessage);
 
 schedule.scheduleJob(RUN_STANDUP_REMINDER, checkUsersResponse);
 
 console.log("Scheduled task created!");
+console.log(RUN_STANDUP);
+console.log(RUN_STANDUP_REMINDER);
