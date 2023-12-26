@@ -28,7 +28,7 @@ async function checkUserResponseInThread(userId, threadTs) {
       await sendDirectMessage(userId, getReminderMessage());
     }
   } catch (error) {
-    console.error(error);
+    console.error(new Date(), error);
   }
 }
 
@@ -43,7 +43,7 @@ async function postMessage(messageText, threadTs = null) {
     console.log(new Date(), "Message sent: ", res.ts);
     return String(res.ts); // Return the timestamp for threading purposes
   } catch (error) {
-    console.error(error);
+    console.error(new Date(), error);
     return null;
   }
 }
@@ -56,7 +56,7 @@ async function sendDirectMessage(userId, messageText) {
       text: messageText,
     });
   } catch (error) {
-    console.error(error);
+    console.error(new Date(), error);
   }
 }
 
