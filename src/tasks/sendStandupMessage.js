@@ -77,6 +77,10 @@ async function sendStandupMessage() {
 }
 
 async function checkUsersResponse() {
+  console.log(
+    new Date(),
+    "Running scheduled task for checking users response!",
+  );
   if (lastThreadTs) {
     const userIds = process.env.SLACK_USERS.split(",");
 
