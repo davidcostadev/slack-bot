@@ -6,27 +6,39 @@ const {
 } = require("./src/tasks/sendStandupMessage.js");
 
 if (!process.env.SLACK_BOT_TOKEN) {
-  console.log("Error: Specify token in environment");
+  console.log(new Date(), "Error: Specify token in environment");
   process.exit(1);
 }
 
 if (!process.env.SLACK_CHANNEL_ID) {
-  console.log("Error: Specify channel in environment");
+  console.log(new Date(), "Error: Specify channel in environment");
   process.exit(1);
 }
 
 if (!process.env.SLACK_USERS) {
-  console.log("Error: Specify users list in environment");
+  console.log(new Date(), "Error: Specify users list in environment");
   process.exit(1);
 }
 
-const RUN_STANDUP = "0 15 * * 1-5";
-const RUN_STANDUP_REMINDER = "0 16 * * 1-5";
+const ruleStandup = new schedule.RecurrenceRule();
 
-schedule.scheduleJob(RUN_STANDUP, sendStandupMessage);
+// monday to friday
+ruleStandup.dayOfWeek = new schedule.Range(1, 5);
+ruleStandup.hour = 12;
+ruleStandup.minute = 0;
+ruleStandup.second = 0;
+ruleStandup.tz = "America/Recife";
 
-schedule.scheduleJob(RUN_STANDUP_REMINDER, checkUsersResponse);
+const ruleReminder = new schedule.RecurrenceRule();
 
-console.log("Scheduled task created!");
-console.log(RUN_STANDUP);
-console.log(RUN_STANDUP_REMINDER);
+ruleReminder.dayOfWeek = new schedule.Range(1, 5);
+ruleReminder.hour = 13;
+ruleReminder.minute = 0;
+ruleReminder.second = 0;
+ruleReminder.tz = "America/Recife";
+
+schedule.scheduleJob(ruleStandup, sendStandupMessage);
+
+schedule.scheduleJob(ruleReminder, checkUsersResponse);
+
+console.log(new Date(), "Scheduled task created!");

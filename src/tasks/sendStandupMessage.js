@@ -24,7 +24,7 @@ async function checkUserResponseInThread(userId, threadTs) {
     );
 
     if (!userHasResponded) {
-      console.log("User has not responded yet: ", userId);
+      console.log(new Date(), "User has not responded yet: ", userId);
       await sendDirectMessage(userId, getReminderMessage());
     }
   } catch (error) {
@@ -40,7 +40,7 @@ async function postMessage(messageText, threadTs = null) {
       thread_ts: threadTs ? threadTs : undefined,
     });
 
-    console.log("Message sent: ", res.ts);
+    console.log(new Date(), "Message sent: ", res.ts);
     return String(res.ts); // Return the timestamp for threading purposes
   } catch (error) {
     console.error(error);
@@ -68,7 +68,7 @@ async function sendStandupMessage() {
   const formattedDate = formatDate(new Date());
   const introMessage = `*Daily Standup Update for ${formattedDate}* `;
   lastThreadTs = await postMessage(introMessage);
-  console.log("lastThreadTs: ", lastThreadTs);
+  console.log(new Date(), "lastThreadTs: ", lastThreadTs);
 
   if (lastThreadTs) {
     const standupMessage = generateMessage();
