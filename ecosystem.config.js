@@ -2,8 +2,7 @@ module.exports = {
   apps: [
     {
       name: "wingbot",
-      script: "pnpm",
-      args: "start",
+      script: "node start",
       interpreter: "/bin/bash",
     },
   ],
