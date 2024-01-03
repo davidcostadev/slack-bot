@@ -25,7 +25,7 @@ const ruleStandup = new schedule.RecurrenceRule();
 // monday to friday
 ruleStandup.dayOfWeek = new schedule.Range(1, 5);
 ruleStandup.hour = 17;
-ruleStandup.minute = 14;
+ruleStandup.minute = 21;
 ruleStandup.second = 0;
 ruleStandup.tz = "America/Recife";
 
