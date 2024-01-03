@@ -24,16 +24,16 @@ const ruleStandup = new schedule.RecurrenceRule();
 
 // monday to friday
 ruleStandup.dayOfWeek = new schedule.Range(1, 5);
-ruleStandup.hour = 17;
-ruleStandup.minute = 23;
+ruleStandup.hour = 12;
+ruleStandup.minute = 0;
 ruleStandup.second = 0;
 ruleStandup.tz = "America/Recife";
 
 const ruleReminder = new schedule.RecurrenceRule();
 
 ruleReminder.dayOfWeek = new schedule.Range(1, 5);
-ruleReminder.hour = 17;
-ruleReminder.minute = 30;
+ruleReminder.hour = 13;
+ruleReminder.minute = 0;
 ruleReminder.second = 0;
 ruleReminder.tz = "America/Recife";
 
